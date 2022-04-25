@@ -1,1 +1,1 @@
-export * from './Blossoms';
+export { Blossoms as default } from './Blossoms';

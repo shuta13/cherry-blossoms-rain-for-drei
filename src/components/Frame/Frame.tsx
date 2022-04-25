@@ -1,5 +1,5 @@
 import { Euler, useFrame, Vector3 } from '@react-three/fiber';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 import type { Mesh } from 'three';
 
@@ -19,7 +19,7 @@ export const Frame = (props: FrameProps) => {
   const [hovered, setHover] = useState(false);
   useFrame((state, delta) => {
     mesh.current.position.y =
-      2 + Math.sin(rnd * 10000 + state.clock.elapsedTime / 2) / 6;
+      2 + Math.sin(rnd * 10000 + state.clock.elapsedTime / 2) / 2;
     mesh.current.scale.x = THREE.MathUtils.lerp(
       mesh.current.scale.x,
       hovered ? 1 : 0.875,
@@ -30,9 +30,6 @@ export const Frame = (props: FrameProps) => {
       hovered ? 1 : 0.905,
       0.1
     );
-    // @ts-expect-error
-    mesh.current.material.uniforms.time.value +=
-      (Math.sin(delta / 2) * Math.cos(delta / 2)) / 4;
   });
 
   return (

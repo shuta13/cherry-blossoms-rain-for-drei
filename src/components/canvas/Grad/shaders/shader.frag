@@ -7,5 +7,5 @@ uniform vec3 color;
 varying vec2 vUv;
 
 void main() {
-  gl_FragColor.rgba = vec4(0.4 + 0.3 * sin(vUv.xxx + time) + color, 1.0);
+  gl_FragColor.rgba = vec4(0.8 + 0.5 * sin(vUv.xyx + time) + color, 1.0);
 }

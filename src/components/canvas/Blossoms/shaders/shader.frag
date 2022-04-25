@@ -9,7 +9,7 @@ uniform vec3 color;
 varying vec2 vUv;
 
 // ref. https://codepen.io/UstymUkhman/pen/jpZGZW
-float snow(vec2 vUv, float scale) {
+float blossom(vec2 vUv, float scale) {
     float w = smoothstep(1.0, 0.0, -vUv.y * (scale / 10.0));
     
     if (w < 0.1) {
@@ -48,13 +48,13 @@ float snow(vec2 vUv, float scale) {
     // vec2 vUv = (gl_FragCoord.xy * 2.0 - resolution.xy) / size;
     float c = 1.0 - smoothstep(1.0, 0.0, clamp(vUv.y * 0.1 + 0.75, 0.0, 0.75));
 
-    // c += snow(vUv, 30.0) * 0.3;
-    // c += snow(vUv, 20.0) * 0.5;
-    c += snow(vUv, 15.0) * 0.8;
+    // c += blossom(vUv, 30.0) * 0.3;
+    // c += blossom(vUv, 20.0) * 0.5;
+    c += blossom(vUv, 15.0) * 0.8;
 
-    c += snow(vUv, 10.0);
-    c += snow(vUv, 5.0);
-    c += snow(vUv, 1.0);
+    c += blossom(vUv, 10.0);
+    c += blossom(vUv, 5.0);
+    c += blossom(vUv, 1.0);
 
     gl_FragColor = vec4(c, 1.0 - c * 0.3 * vUv.y, 1.0 - c * 0.1, 0.8); // 0.0
   }
